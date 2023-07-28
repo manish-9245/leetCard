@@ -16,6 +16,26 @@ function url() {
 function preview() {
     document.querySelector("#preview").src = "https://leetcard.jacoblin.cool/"+url().split("/")[3];
 }
+document.getElementById('downloadButton').addEventListener('click', function() {
+    const externalUrl = document.querySelector("#preview").src;
+    
+    fetch(externalUrl)
+      .then(response => response.text())
+      .then(svgData => {
+        const blob = new Blob([svgData], { type: 'image/svg+xml' });
+        const url = URL.createObjectURL(blob);
+
+        const anchor = document.createElement('a');
+        anchor.href = url;
+        anchor.download = 'coderbabuaa.svg'; // Set the desired filename here
+        anchor.click();
+
+        URL.revokeObjectURL(url);
+      })
+      .catch(error => {
+        console.error('Error fetching SVG data:', error);
+      });
+  });
 function go() {
     let win = window.open();
     win.location = "https://leetcard.jacoblin.cool/"+url().split("/")[3];
@@ -26,21 +46,4 @@ function md() {
 }
 function value(id) {
     return document.querySelector("#" + id).value.trim() || "";
-}
-async function saveImage() {
-const imgElement = document.getElementById("preview");
-const imageSrc = imgElement.src+".png";
-
-try {
-    const response = await fetch(imageSrc);
-    const blob = await response.blob();
-
-    // Create a temporary anchor element to initiate the download
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = "username_lc.png";
-    link.click();
-} catch (error) {
-    console.error("Error fetching image data:", error);
-}
 }
