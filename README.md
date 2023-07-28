@@ -1,6 +1,6 @@
 # LeetCode Stats Visualizer
 
-![Image](https://i.ibb.co/ncNmLWq/Capture.png)
+![Image](demo.gif)
 
 LeetCode Stats Visualizer is a tool that allows you to showcase your LeetCode statistics on your GitHub profile or personal website. With over 1420 font-style customizations and support for multiple themes, you can create a visually appealing LeetCode Stats Card that reflects your coding achievements.
 

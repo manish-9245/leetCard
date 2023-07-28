@@ -27,7 +27,7 @@ document.getElementById('downloadButton').addEventListener('click', function() {
 
         const anchor = document.createElement('a');
         anchor.href = url;
-        anchor.download = 'coderbabuaa.svg'; // Set the desired filename here
+        anchor.download = document.querySelector("#username").value+'.svg'; // Set the desired filename here
         anchor.click();
 
         URL.revokeObjectURL(url);
